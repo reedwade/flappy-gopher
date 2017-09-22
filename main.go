@@ -30,6 +30,11 @@ func main() {
 	}
 }
 
+const (
+	windowWidth  = 1600
+	windowHeight = 1200
+)
+
 func run() error {
 	err := sdl.Init(sdl.INIT_EVERYTHING)
 	if err != nil {
@@ -42,7 +47,7 @@ func run() error {
 	}
 	defer ttf.Quit()
 
-	w, r, err := sdl.CreateWindowAndRenderer(800, 600, sdl.WINDOW_SHOWN)
+	w, r, err := sdl.CreateWindowAndRenderer(windowWidth, windowHeight, sdl.WINDOW_SHOWN)
 	if err != nil {
 		return fmt.Errorf("could not create window: %v", err)
 	}

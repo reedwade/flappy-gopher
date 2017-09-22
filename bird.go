@@ -67,7 +67,7 @@ func (b *bird) paint(r *sdl.Renderer) error {
 	b.mu.RLock()
 	defer b.mu.RUnlock()
 
-	rect := &sdl.Rect{X: 10, Y: 600 - b.y - b.h/2, W: b.w, H: b.h}
+	rect := &sdl.Rect{X: 10, Y: windowHeight - b.y - b.h/2, W: b.w, H: b.h}
 
 	i := b.time / 10 % len(b.textures)
 	if err := r.Copy(b.textures[i], nil, rect); err != nil {
@@ -120,7 +120,7 @@ func (b *bird) touch(p *pipe) {
 	if !p.inverted && p.h < b.y-b.h/2 { // pipe is too low
 		return
 	}
-	if p.inverted && 600-p.h > b.y+b.h/2 { // inverted pipe is too high
+	if p.inverted && windowHeight-p.h > b.y+b.h/2 { // inverted pipe is too high
 		return
 	}
 

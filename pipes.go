@@ -116,7 +116,7 @@ type pipe struct {
 
 func newPipe() *pipe {
 	return &pipe{
-		x:        800,
+		x:        windowWidth,
 		h:        100 + int32(rand.Intn(300)),
 		w:        50,
 		inverted: rand.Float32() > 0.5,
@@ -133,7 +133,7 @@ func (p *pipe) paint(r *sdl.Renderer, texture *sdl.Texture) error {
 	p.mu.RLock()
 	defer p.mu.RUnlock()
 
-	rect := &sdl.Rect{X: p.x, Y: 600 - p.h, W: p.w, H: p.h}
+	rect := &sdl.Rect{X: p.x, Y: windowHeight - p.h, W: p.w, H: p.h}
 	flip := sdl.FLIP_NONE
 	if p.inverted {
 		rect.Y = 0
