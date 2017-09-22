@@ -22,8 +22,8 @@ import (
 )
 
 const (
-	gravity   = 0.1
-	jumpSpeed = 5
+	gravity   = 0.03 //0.1
+	jumpSpeed = 3    //5
 )
 
 type bird struct {
