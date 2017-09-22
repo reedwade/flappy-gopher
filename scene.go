@@ -85,6 +85,11 @@ func (s *scene) handleEvent(event sdl.Event) bool {
 	case *sdl.MouseButtonEvent:
 		s.bird.jump()
 	case *sdl.MouseMotionEvent, *sdl.WindowEvent, *sdl.TouchFingerEvent, *sdl.CommonEvent:
+	case *sdl.TextInputEvent:
+		k := string(event.(*sdl.TextInputEvent).Text[0])
+		if k == "q" {
+			return true
+		}
 	default:
 		log.Printf("unknown event %T", event)
 	}
